@@ -1,7 +1,11 @@
-export default function Home() {
+import Hero from "@/components/sections/Hero";
+
+const Home = () => {
   return (
     <main>
-      <h1>Welcome to my portfolio</h1>
+      <Hero />
     </main>
   );
-}
+};
+
+export default Home;
