@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowDown, Mail } from "lucide-react";
+import { ArrowDown, Mail, Plane } from "lucide-react";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import { useEffect, useRef, useState } from "react";
 
@@ -62,7 +62,6 @@ const HandwrittenName = () => {
       });
       setPhase("ready");
 
-      // double rAF ensures browser has painted "ready" state before transitioning
       requestAnimationFrame(() =>
         requestAnimationFrame(() => setPhase("animating")),
       );
@@ -80,9 +79,9 @@ const HandwrittenName = () => {
       >
         <defs>
           <linearGradient id="nameGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#e8c4a0" />
-            <stop offset="50%" stopColor="#d4a574" />
-            <stop offset="100%" stopColor="#c2907a" />
+            <stop offset="0%" stopColor="#6366f1" />
+            <stop offset="50%" stopColor="#4f46e5" />
+            <stop offset="100%" stopColor="#8b5cf6" />
           </linearGradient>
         </defs>
 
@@ -122,19 +121,19 @@ const Hero = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       aria-label="Introduction"
     >
-      {/* Warm gradient mesh background */}
+      {/* Soft gradient mesh background with accent colors */}
       <div
         className="pointer-events-none absolute inset-0 overflow-hidden"
         aria-hidden="true"
       >
-        <div className="absolute top-[-20%] left-[15%] h-[600px] w-[600px] rounded-full bg-accent/[0.14] blur-[140px]" />
-        <div className="absolute bottom-[-10%] right-[10%] h-[500px] w-[500px] rounded-full bg-accent-warm/[0.12] blur-[140px]" />
-        <div className="absolute top-[30%] right-[-5%] h-[400px] w-[400px] rounded-full bg-accent-glow/[0.08] blur-[120px]" />
+        <div className="absolute top-[-20%] left-[15%] h-[600px] w-[600px] rounded-full bg-accent/[0.12] blur-[140px]" />
+        <div className="absolute bottom-[-10%] right-[10%] h-[500px] w-[500px] rounded-full bg-accent-warm/[0.10] blur-[140px]" />
+        <div className="absolute top-[30%] right-[-5%] h-[400px] w-[400px] rounded-full bg-accent-glow/[0.14] blur-[120px]" />
       </div>
 
       {/* Subtle noise/grain overlay for texture */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.03]"
+        className="pointer-events-none absolute inset-0 opacity-[0.025]"
         aria-hidden="true"
         style={{
           backgroundImage:
@@ -146,17 +145,33 @@ const Hero = () => {
         <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16 lg:gap-20">
           {/* Text Content */}
           <div className="flex-1 text-center md:text-left order-2 md:order-1">
-            {/* Availability Badge */}
+            {/* Next Stop Badge */}
             <motion.div
               {...fadeUp(0.1)}
-              className="inline-flex items-center gap-2.5 mb-8 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 backdrop-blur-sm"
+              className="inline-flex items-center gap-2 mb-8 rounded-full border border-accent/10 bg-white/80 backdrop-blur-sm px-4 py-1.5 shadow-sm shadow-accent/5"
             >
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-              </span>
-              <span className="text-xs font-mono text-stone-400 tracking-wide">
-                Open to opportunities
+              {/* Animated plane */}
+              <motion.span
+                className="text-accent"
+                initial={{ x: -10, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
+              >
+                <motion.span
+                  className="block"
+                  animate={{ x: [0, 2, 0], y: [0, -1, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <Plane size={14} className="-rotate-12" strokeWidth={2.5} />
+                </motion.span>
+              </motion.span>
+              <span className="text-xs font-mono text-zinc-600 tracking-wide">
+                Next stop{" "}
+                <span
+                  className="font-semibold bg-gradient-to-r from-emerald-600 via-teal-500 to-sky-600 bg-clip-text text-transparent"
+                >
+                  Seattle
+                </span>
               </span>
             </motion.div>
 
@@ -174,17 +189,17 @@ const Hero = () => {
             {/* Tagline */}
             <motion.p
               {...fadeUp(CONTENT_START)}
-              className="mt-2 text-lg sm:text-xl lg:text-2xl font-medium text-stone-300 leading-snug"
+              className="mt-2 text-lg sm:text-xl lg:text-2xl font-medium text-zinc-900 leading-snug"
             >
               I build digital experiences
               <br className="hidden sm:block" />
-              <span className="text-stone-500"> people remember.</span>
+              <span className="text-zinc-400"> people remember.</span>
             </motion.p>
 
             {/* Description */}
             <motion.p
               {...fadeUp(CONTENT_START + 0.15)}
-              className="mt-6 max-w-md text-base text-stone-500 leading-relaxed mx-auto md:mx-0"
+              className="mt-6 max-w-md text-base text-zinc-500 leading-relaxed mx-auto md:mx-0"
             >
               New grad software engineer passionate about crafting polished,
               user-centered web applications. Bringing fresh perspective and
@@ -198,7 +213,7 @@ const Hero = () => {
             >
               <a
                 href="#projects"
-                className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3 text-sm font-medium text-stone-950 hover:bg-accent-hover transition-all duration-300 hover:shadow-lg hover:shadow-accent/20"
+                className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3 text-sm font-medium text-white hover:bg-accent-hover transition-all duration-300 hover:shadow-lg hover:shadow-accent/25"
                 tabIndex={0}
                 aria-label="Explore my work"
               >
@@ -210,7 +225,7 @@ const Hero = () => {
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.04] px-7 py-3 text-sm font-medium text-stone-300 hover:bg-white/[0.08] hover:border-white/[0.2] transition-all duration-300 backdrop-blur-sm"
+                className="inline-flex items-center gap-2 rounded-full border border-accent/15 bg-white/80 backdrop-blur-sm px-7 py-3 text-sm font-medium text-zinc-700 hover:bg-white hover:border-accent/25 transition-all duration-300 shadow-sm"
                 tabIndex={0}
                 aria-label="Get in touch"
               >
@@ -229,16 +244,16 @@ const Hero = () => {
           >
             <CardContainer containerClassName="py-0">
               <CardBody className="w-64 sm:w-72 lg:w-80 h-auto relative">
-                {/* Glow behind card */}
+                {/* Shadow behind card */}
                 <div
-                  className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-accent/20 via-accent-warm/15 to-accent-glow/20 blur-2xl"
+                  className="absolute -inset-4 rounded-3xl bg-accent/[0.06] blur-2xl"
                   aria-hidden="true"
                 />
 
                 {/* Card with gradient border */}
                 <CardItem translateZ="40" className="w-full relative">
-                  <div className="rounded-3xl bg-gradient-to-br from-accent-glow via-accent to-accent-warm p-[2px]">
-                    <div className="rounded-3xl bg-stone-950 overflow-hidden">
+                  <div className="rounded-3xl bg-gradient-to-br from-accent via-accent-hover to-accent-warm p-[2px] shadow-2xl shadow-accent/20">
+                    <div className="rounded-3xl bg-zinc-950 overflow-hidden">
                       <div className="relative aspect-[3/4]">
                         <Image
                           src="/images/headshot.jpg"
@@ -250,12 +265,12 @@ const Hero = () => {
                         />
 
                         {/* Bottom gradient overlay with info */}
-                        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-stone-950 via-stone-950/80 to-transparent px-5 pb-5 pt-20">
+                        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent px-5 pb-5 pt-20">
                           <p className="text-base font-semibold text-white">
                             Ridwan Amin
                           </p>
-                          <p className="text-sm font-mono text-stone-400 mt-0.5">
-                            Software Engineer &middot; Class of 2026
+                          <p className="text-sm font-mono text-zinc-400 mt-0.5">
+                            University of Texas at Dallas &middot; Class of 2026
                           </p>
                         </div>
                       </div>
@@ -269,24 +284,25 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
+      <motion.a
+        href="#about"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: CONTENT_START + 0.8, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        aria-hidden="true"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer"
+        aria-label="Scroll to about section"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="flex flex-col items-center gap-2"
         >
-          <span className="text-[11px] font-mono text-stone-600 tracking-widest uppercase">
+          <span className="text-[11px] font-mono text-zinc-400 tracking-widest uppercase">
             scroll
           </span>
-          <div className="h-8 w-px bg-gradient-to-b from-stone-600 to-transparent" />
+          <div className="h-8 w-px bg-gradient-to-b from-accent/30 to-transparent" />
         </motion.div>
-      </motion.div>
+      </motion.a>
     </section>
   );
 };

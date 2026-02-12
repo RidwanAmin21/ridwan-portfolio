@@ -13,32 +13,32 @@ import { FloatingDock } from "@/components/ui/floating-dock";
 const NAV_ITEMS = [
   {
     title: "Home",
-    icon: <IconHome className="h-full w-full text-stone-300" />,
+    icon: <IconHome className="h-full w-full text-zinc-600" />,
     href: "#",
   },
   {
     title: "About",
-    icon: <IconUser className="h-full w-full text-stone-300" />,
+    icon: <IconUser className="h-full w-full text-zinc-600" />,
     href: "#about",
   },
   {
     title: "Projects",
-    icon: <IconCode className="h-full w-full text-stone-300" />,
+    icon: <IconCode className="h-full w-full text-zinc-600" />,
     href: "#projects",
   },
   {
     title: "Experience",
-    icon: <IconBriefcase className="h-full w-full text-stone-300" />,
+    icon: <IconBriefcase className="h-full w-full text-zinc-600" />,
     href: "#experience",
   },
   {
     title: "Contact",
-    icon: <IconMail className="h-full w-full text-stone-300" />,
+    icon: <IconMail className="h-full w-full text-zinc-600" />,
     href: "#contact",
   },
   {
     title: "Resume",
-    icon: <IconFileText className="h-full w-full text-stone-300" />,
+    icon: <IconFileText className="h-full w-full text-zinc-600" />,
     href: "/Ridwan_Amin_Resume_2025__Copy_%20(1).pdf",
   },
 ];

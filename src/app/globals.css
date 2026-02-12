@@ -5,10 +5,10 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-accent: #d4a574;
-  --color-accent-hover: #c49464;
-  --color-accent-warm: #c2907a;
-  --color-accent-glow: #e8c4a0;
+  --color-accent: #6366f1;
+  --color-accent-hover: #4f46e5;
+  --color-accent-warm: #c4b5fd;
+  --color-accent-glow: #a5b4fc;
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
   --font-cursive: var(--font-dancing-script), "Dancing Script", cursive;
@@ -19,8 +19,8 @@ html {
 }
 
 body {
-  background-color: #0c0a09;
-  color: #fafaf9;
+  background-color: #fafafa;
+  color: #0a0a0a;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -28,7 +28,7 @@ body {
 
 ::selection {
   background-color: var(--color-accent);
-  color: #0c0a09;
+  color: #fafafa;
 }
 
 @theme inline {
