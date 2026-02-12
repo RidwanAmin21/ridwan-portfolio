@@ -33,7 +33,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="relative py-28 md:py-36 overflow-hidden"
+      className="relative py-20 md:py-28 overflow-hidden"
       aria-label="About me"
     >
       {/* Subtle background accents */}
@@ -47,7 +47,7 @@ const About = () => {
 
       <div className="relative mx-auto max-w-5xl w-full px-6">
         {/* Section header */}
-        <div className="mb-16 md:mb-20">
+        <div className="mb-10 md:mb-14">
           <motion.div {...fadeInUp(0)} className="flex items-center gap-3 mb-4">
             <div className="h-px w-8 bg-accent/40" />
             <span className="font-mono text-xs text-accent tracking-widest uppercase">
@@ -65,7 +65,7 @@ const About = () => {
         </div>
 
         {/* Content grid */}
-        <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-start">
+        <div className="grid md:grid-cols-5 gap-10 md:gap-12 items-start">
           {/* Left column — narrative text */}
           <div className="md:col-span-3 space-y-6">
             <motion.p
@@ -100,31 +100,6 @@ const About = () => {
               out ideas for my next build.
             </motion.p>
 
-            {/* Quick tech stack pills */}
-            <motion.div {...fadeInUp(0.45)} className="pt-4">
-              <p className="font-mono text-xs text-zinc-400 tracking-wider uppercase mb-3">
-                Tech I work with
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "TypeScript",
-                  "React",
-                  "Next.js",
-                  "Node.js",
-                  "Tailwind CSS",
-                  "Python",
-                  "PostgreSQL",
-                  "Git",
-                ].map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-full border border-accent/10 bg-white/80 px-3.5 py-1.5 text-xs font-mono text-zinc-600 shadow-sm"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
           </div>
 
           {/* Right column — highlight cards */}
@@ -151,7 +126,7 @@ const About = () => {
               </motion.div>
             ))}
 
-            {/* Fun accent card */}
+            {/* Fun accent card */} {/*
             <motion.div
               {...fadeInUp(0.5)}
               className="rounded-2xl bg-gradient-to-br from-accent/[0.06] to-accent-warm/[0.06] border border-accent/[0.08] p-5"
@@ -166,7 +141,7 @@ const About = () => {
                 I&apos;m a firm believer that great software is built at the
                 intersection of design empathy and engineering rigor.
               </p>
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowDown, Mail, Plane } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, Plane } from "lucide-react";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import { useEffect, useRef, useState } from "react";
 
@@ -231,6 +231,38 @@ const Hero = () => {
               >
                 <Mail size={16} />
                 Get in Touch
+              </a>
+            </motion.div>
+
+            {/* Social Links */}
+            <motion.div
+              {...fadeUp(CONTENT_START + 0.45)}
+              className="mt-6 flex gap-3 justify-center md:justify-start"
+            >
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="grid place-items-center h-9 w-9 rounded-full border border-zinc-200 bg-white/80 backdrop-blur-sm text-zinc-500 hover:text-accent hover:border-accent/25 hover:shadow-md hover:shadow-accent/10 transition-all duration-300"
+              >
+                <Linkedin size={16} />
+              </a>
+              <a
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="grid place-items-center h-9 w-9 rounded-full border border-zinc-200 bg-white/80 backdrop-blur-sm text-zinc-500 hover:text-accent hover:border-accent/25 hover:shadow-md hover:shadow-accent/10 transition-all duration-300"
+              >
+                <Github size={16} />
+              </a>
+              <a
+                href="mailto:hello@example.com"
+                aria-label="Email"
+                className="grid place-items-center h-9 w-9 rounded-full border border-zinc-200 bg-white/80 backdrop-blur-sm text-zinc-500 hover:text-accent hover:border-accent/25 hover:shadow-md hover:shadow-accent/10 transition-all duration-300"
+              >
+                <Mail size={16} />
               </a>
             </motion.div>
           </div>
