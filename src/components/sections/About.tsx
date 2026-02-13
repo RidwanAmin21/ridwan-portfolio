@@ -36,13 +36,15 @@ const About = () => {
       className="relative py-20 md:py-28 overflow-hidden"
       aria-label="About me"
     >
-      {/* Subtle background accents */}
-      <div
-        className="pointer-events-none absolute inset-0 overflow-hidden"
-        aria-hidden="true"
-      >
-        <div className="absolute top-[10%] right-[20%] h-[400px] w-[400px] rounded-full bg-accent/[0.06] blur-[120px]" />
-        <div className="absolute bottom-[10%] left-[15%] h-[350px] w-[350px] rounded-full bg-accent-warm/[0.06] blur-[120px]" />
+      {/* Section accent wash */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent-warm/[0.03] to-transparent" />
+        <div className="absolute top-[20%] right-[10%] h-[400px] w-[600px] rounded-full bg-accent-warm/[0.05] blur-[150px]" />
+      </div>
+
+      {/* Divider line */}
+      <div className="mx-auto max-w-5xl px-6 relative">
+        <div className="h-px bg-gradient-to-r from-transparent via-zinc-200 to-transparent" />
       </div>
 
       <div className="relative mx-auto max-w-5xl w-full px-6">

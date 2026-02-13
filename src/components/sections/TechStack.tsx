@@ -20,9 +20,15 @@ const techLogos: LogoItem[] = [
 /* ── tech stack section ───────────────────────────────────── */
 const TechStack = () => {
   return (
-    <section id="tech-stack" aria-label="Tech Stack" className="relative">
+    <section id="tech-stack" aria-label="Tech Stack" className="relative overflow-hidden">
+      {/* Subtle local gradient wash */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/[0.03] to-transparent" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[800px] rounded-full bg-accent-glow/[0.06] blur-[160px]" />
+      </div>
+
       {/* Divider line */}
-      <div className="mx-auto max-w-5xl px-6">
+      <div className="mx-auto max-w-5xl px-6 relative">
         <div className="h-px bg-gradient-to-r from-transparent via-zinc-200 to-transparent" />
       </div>
 
@@ -39,7 +45,7 @@ const TechStack = () => {
         logoImageHeight="h-12"
         padding="py-14 lg:py-20"
         spacing="gap-6"
-        containerClassName="!bg-[#fafafa]"
+        containerClassName="!bg-transparent"
         titleClassName="!text-zinc-900 !font-semibold !tracking-tight"
         logoClassName="hover:!bg-accent/[0.08] rounded-xl"
       />

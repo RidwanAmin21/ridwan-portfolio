@@ -121,25 +121,11 @@ const Hero = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       aria-label="Introduction"
     >
-      {/* Soft gradient mesh background with accent colors */}
-      <div
-        className="pointer-events-none absolute inset-0 overflow-hidden"
-        aria-hidden="true"
-      >
-        <div className="absolute top-[-20%] left-[15%] h-[600px] w-[600px] rounded-full bg-accent/[0.12] blur-[140px]" />
-        <div className="absolute bottom-[-10%] right-[10%] h-[500px] w-[500px] rounded-full bg-accent-warm/[0.10] blur-[140px]" />
-        <div className="absolute top-[30%] right-[-5%] h-[400px] w-[400px] rounded-full bg-accent-glow/[0.14] blur-[120px]" />
+      {/* Section accent wash */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div className="absolute inset-0 bg-gradient-to-b from-accent/[0.04] via-transparent to-transparent" />
+        <div className="absolute top-[-10%] left-[20%] h-[500px] w-[700px] rounded-full bg-accent/[0.05] blur-[160px]" />
       </div>
-
-      {/* Subtle noise/grain overlay for texture */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.025]"
-        aria-hidden="true"
-        style={{
-          backgroundImage:
-            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-        }}
-      />
 
       <div className="relative mx-auto max-w-6xl w-full px-6 pt-28 pb-20 md:py-0">
         <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16 lg:gap-20">

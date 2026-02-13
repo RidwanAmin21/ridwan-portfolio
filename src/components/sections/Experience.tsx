@@ -198,13 +198,15 @@ const Experience = () => {
       className="relative py-20 md:py-28 overflow-hidden"
       aria-label="Experience"
     >
-      {/* Background accents */}
-      <div
-        className="pointer-events-none absolute inset-0 overflow-hidden"
-        aria-hidden="true"
-      >
-        <div className="absolute top-[15%] left-[10%] h-[400px] w-[400px] rounded-full bg-accent/[0.06] blur-[120px]" />
-        <div className="absolute bottom-[10%] right-[15%] h-[350px] w-[350px] rounded-full bg-accent-warm/[0.06] blur-[120px]" />
+      {/* Section accent wash */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/[0.025] to-transparent" />
+        <div className="absolute top-[30%] left-[5%] h-[450px] w-[650px] rounded-full bg-accent-glow/[0.04] blur-[150px]" />
+      </div>
+
+      {/* Divider line */}
+      <div className="mx-auto max-w-5xl px-6 relative">
+        <div className="h-px bg-gradient-to-r from-transparent via-zinc-200 to-transparent" />
       </div>
 
       <div className="relative mx-auto max-w-6xl w-full px-6">
@@ -331,11 +333,40 @@ const Experience = () => {
                   {selected.isFeatured && (
                     <div className="flex items-center gap-2 mb-4">
                       <motion.span
-                        initial={{ scale: 0.9 }}
-                        animate={{ scale: 1 }}
-                        className="inline-flex items-center gap-1.5 rounded-full bg-accent/[0.08] px-3 py-1 text-[11px] font-semibold text-accent uppercase tracking-wider"
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{
+                          scale: 1,
+                          opacity: 1,
+                          boxShadow: [
+                            "0 0 0 0 rgba(99, 102, 241, 0.4)",
+                            "0 0 0 8px rgba(99, 102, 241, 0)",
+                            "0 0 0 0 rgba(99, 102, 241, 0)",
+                          ],
+                        }}
+                        transition={{
+                          scale: { duration: 0.4, ease: "easeOut" },
+                          opacity: { duration: 0.3 },
+                          boxShadow: {
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeOut",
+                            delay: 0.5,
+                          },
+                        }}
+                        className="inline-flex items-center gap-1.5 rounded-full bg-accent/[0.1] border border-accent/20 px-3 py-1 text-[11px] font-semibold text-accent uppercase tracking-wider shadow-sm"
                       >
-                        <Sparkles size={12} />
+                        <motion.span
+                          animate={{ rotate: [0, 15, -15, 0] }}
+                          transition={{
+                            duration: 1.5,
+                            repeat: Infinity,
+                            repeatDelay: 2,
+                            ease: "easeInOut",
+                          }}
+                          className="inline-flex"
+                        >
+                          <Sparkles size={12} />
+                        </motion.span>
                         Incoming
                       </motion.span>
                     </div>
