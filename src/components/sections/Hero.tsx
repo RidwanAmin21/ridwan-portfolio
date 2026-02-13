@@ -240,7 +240,7 @@ const Hero = () => {
               className="mt-6 flex gap-3 justify-center md:justify-start"
             >
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/ridwan-amin-345621248/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -249,7 +249,7 @@ const Hero = () => {
                 <Linkedin size={16} />
               </a>
               <a
-                href="https://github.com"
+                href="https://github.com/RidwanAmin21"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -258,7 +258,7 @@ const Hero = () => {
                 <Github size={16} />
               </a>
               <a
-                href="mailto:hello@example.com"
+                href="mailto:ridwan.amin41@gmail.com"
                 aria-label="Email"
                 className="grid place-items-center h-9 w-9 rounded-full border border-zinc-200 bg-white/80 backdrop-blur-sm text-zinc-500 hover:text-accent hover:border-accent/25 hover:shadow-md hover:shadow-accent/10 transition-all duration-300"
               >

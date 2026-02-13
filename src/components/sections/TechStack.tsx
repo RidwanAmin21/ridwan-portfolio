@@ -27,7 +27,7 @@ const TechStack = () => {
       </div>
 
       <AnimatedCarousel
-        title="Technologies I work with"
+        title="My tech stack"
         logos={techLogos}
         autoPlay={true}
         autoPlayInterval={2000}
