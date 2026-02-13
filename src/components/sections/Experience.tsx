@@ -221,16 +221,16 @@ const Experience = () => {
             {...fadeInUp(0.1)}
             className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-zinc-900 leading-tight"
           >
-            Where I&apos;ve
-            <span className="text-accent"> worked</span>
+            My
+            <span className="text-accent"> Experiences</span>
           </motion.h2>
 
           <motion.p
             {...fadeInUp(0.18)}
             className="mt-4 max-w-lg text-base text-zinc-500 leading-relaxed"
           >
-            From internships to a full-time offer — click a card to explore
-            each chapter of my engineering journey.
+            Click a card to explore
+            each chapter of my journey!
           </motion.p>
         </div>
 
