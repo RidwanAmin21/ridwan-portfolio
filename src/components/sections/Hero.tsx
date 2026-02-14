@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowDown, Github, Linkedin, Mail, Plane } from "lucide-react";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+import { Typewriter } from "@/components/ui/typewriter";
 import { useEffect, useRef, useState } from "react";
 
 /* ── animation timings (seconds) ───────────────────────────── */
@@ -172,14 +173,20 @@ const Hero = () => {
             {/* Handwritten Name — SVG stroke animation */}
             <HandwrittenName />
 
-            {/* Tagline */}
+            {/* Tagline — typewriter cycles "Software Engineer" → "Class of 2026" → "Incoming @ AWS" */}
             <motion.p
               {...fadeUp(CONTENT_START)}
-              className="mt-2 text-lg sm:text-xl lg:text-2xl font-medium text-zinc-900 leading-snug"
+              className="mt-2 text-xl sm:text-2xl lg:text-3xl font-semibold leading-snug"
             >
-              I build digital experiences
-              <br className="hidden sm:block" />
-              <span className="text-zinc-400"> people remember.</span>
+              <Typewriter
+                text={["Software Engineer", "Class of 2026", "Incoming @ AWS"]}
+                speed={95}
+                waitTime={2400}
+                deleteSpeed={55}
+                className="text-zinc-900"
+                cursorChar="|"
+                cursorClassName="ml-0.5 text-zinc-500"
+              />
             </motion.p>
 
             {/* Description */}
