@@ -59,7 +59,7 @@ const experiences: Experience[] = [
     location: "Plano, TX",
     date: "Jun 2024 – Aug 2024",
     bullets: [
-      "Built REST APIs that connected Fannie Mae's credit systems to AWS S3 and DynamoDB — shaved 10% off data retrieval times and made the whole pipeline more reliable",
+      "Built REST APIs that connected Fannie Mae's credit systems to AWS S3 and DynamoDB to reduce data retrieval times by 10%",
       "Wrote end-to-end unit tests with JUnit and Mockito, pushing coverage past 90%",
       "Wrote Terraform and Jenkins scripts to keep infrastructure reproducible and deployments smooth across environments",
     ],

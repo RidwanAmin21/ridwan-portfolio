@@ -2,6 +2,7 @@ import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import TechStack from "@/components/sections/TechStack";
 import Experience from "@/components/sections/Experience";
+import Contact from "@/components/sections/Contact";
 import ScrollGradient from "@/components/ScrollGradient";
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
       <About />
       <Experience />
       <TechStack />
+      <Contact />
     </main>
   );
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatedCarousel } from "@/components/ui/logo-carousel";
+import { InfiniteScrollCarousel } from "@/components/ui/logo-carousel";
 import type { LogoItem } from "@/components/ui/logo-carousel";
 
 /* ── tech logos (local SVGs from /public/icons) ───────────── */
@@ -15,6 +15,10 @@ const techLogos: LogoItem[] = [
   { src: "/icons/icons8-pandas.svg", label: "Pandas" },
   { src: "/icons/aws-svgrepo-com.svg", label: "AWS" },
   { src: "/icons/postman-icon.svg", label: "Postman" },
+  { src: "/icons/flask.svg", label: "Flask" },
+  { src: "/icons/flutter.svg", label: "Flutter" },
+  { src: "/icons/ruby.svg", label: "Ruby" },
+  { src: "/icons/spring.svg", label: "Spring Boot"},
 ];
 
 /* ── tech stack section ───────────────────────────────────── */
@@ -32,22 +36,19 @@ const TechStack = () => {
         <div className="h-px bg-gradient-to-r from-transparent via-zinc-200 to-transparent" />
       </div>
 
-      <AnimatedCarousel
+      <InfiniteScrollCarousel
         title="My tech stack"
         logos={techLogos}
-        autoPlay={true}
-        autoPlayInterval={2000}
-        itemsPerViewMobile={3}
-        itemsPerViewDesktop={5}
         logoContainerWidth="w-40"
         logoContainerHeight="h-24"
         logoImageWidth="w-auto"
         logoImageHeight="h-12"
-        padding="py-14 lg:py-20"
+        padding="pt-20 pb-14 lg:pt-28 lg:pb-20"
         spacing="gap-6"
         containerClassName="!bg-transparent"
         titleClassName="!text-zinc-900 !font-semibold !tracking-tight"
-        logoClassName="hover:!bg-accent/[0.08] rounded-xl"
+        logoClassName="hover:!bg-accent/[0.08]"
+        speed={36}
       />
     </section>
   );

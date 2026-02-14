@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Dancing_Script, Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
+import ScrollToTop from "@/components/ScrollToTop";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -35,6 +36,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${dancingScript.variable} antialiased`}
       >
+        <ScrollToTop />
         <Navbar />
         {children}
       </body>
