@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, GraduationCap, Lightbulb, Sparkles } from "lucide-react";
+import Image from "next/image";
+import { Sparkles } from "lucide-react";
 
 /* ── scroll-triggered fade-up helper ──────────────────────── */
 const fadeInUp = (delay: number = 0) => ({
@@ -11,21 +12,25 @@ const fadeInUp = (delay: number = 0) => ({
   transition: { duration: 0.6, delay, ease: [0.25, 0.4, 0.25, 1] as const },
 });
 
+const UTD_LOGO = "/icons/UT_Dallas_2_Color_Emblem_-_SVG_Brand_Identity_File.svg.png";
+const ACM_LOGO = "/icons/acm logo.png";
+const HACKUTD_LOGO = "/icons/hackutd-logo.png";
+
 const highlights = [
   {
-    icon: GraduationCap,
-    label: "CS Graduate",
-    description: "Class of 2026 with a focus on full-stack development",
+    image: UTD_LOGO,
+    label: "University of Texas at Dallas",
+    description: "Class of 2026",
   },
   {
-    icon: Code2,
-    label: "Clean Code",
-    description: "Writing maintainable, well-tested, and documented software",
+    image: HACKUTD_LOGO,
+    label: "HackUTD",
+    description: "Corporate Relations Lead",
   },
   {
-    icon: Lightbulb,
-    label: "Problem Solver",
-    description: "Turning complex challenges into elegant, simple solutions",
+    image: ACM_LOGO,
+    label: "ACM UTD",
+    description: "Project Manager and Member",
   },
 ];
 
@@ -113,8 +118,15 @@ const About = () => {
                 className="group relative rounded-2xl border border-accent/[0.08] bg-white/70 backdrop-blur-sm p-5 shadow-sm hover:shadow-md hover:border-accent/20 transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-accent/[0.08] text-accent group-hover:bg-accent/[0.12] transition-colors duration-300">
-                    <item.icon size={20} />
+                  <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-accent/[0.08] text-accent group-hover:bg-accent/[0.12] transition-colors duration-300 overflow-hidden p-1">
+                    <Image
+                      src={item.image}
+                      alt=""
+                      width={32}
+                      height={32}
+                      className="object-contain w-full h-full min-w-[20px] min-h-[20px]"
+                      unoptimized
+                    />
                   </div>
                   <div>
                     <h3 className="text-sm font-semibold text-zinc-800 mb-1">
