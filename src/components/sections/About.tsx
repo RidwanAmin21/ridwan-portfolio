@@ -12,7 +12,8 @@ const fadeInUp = (delay: number = 0) => ({
   transition: { duration: 0.6, delay, ease: [0.25, 0.4, 0.25, 1] as const },
 });
 
-const UTD_LOGO = "/icons/UT_Dallas_2_Color_Emblem_-_SVG_Brand_Identity_File.svg.png";
+const UTD_LOGO =
+  "/icons/UT_Dallas_2_Color_Emblem_-_SVG_Brand_Identity_File.svg.png";
 const ACM_LOGO = "/icons/acm logo.png";
 const HACKUTD_LOGO = "/icons/hackutd-logo.png";
 
@@ -79,34 +80,32 @@ const About = () => {
               {...fadeInUp(0.15)}
               className="text-lg text-zinc-600 leading-relaxed"
             >
-              I&apos;m a new-grad software engineer who fell in love with
-              building for the web. There&apos;s something incredibly rewarding
-              about taking an idea, shaping it with code, and watching it come
-              alive in the browser.
+              I&apos;m a Computer Science senior at the University of Texas at
+              Dallas, graduating in May 2026, with a passion for building
+              scalable and impactful software. I enjoy working on backend
+              systems, full-stack applications, and distributed architectures
+              that solve real-world problems.
             </motion.p>
 
             <motion.p
               {...fadeInUp(0.25)}
               className="text-lg text-zinc-600 leading-relaxed"
             >
-              My focus is on{" "}
-              <span className="text-zinc-800 font-medium">
-                crafting polished user experiences
-              </span>{" "}
-              backed by solid engineering. I care deeply about the details — from
-              fluid animations and accessible interfaces to clean architecture
-              and performant code.
+              I served as Corporate Relations Lead for HackUTD, where I managed
+              sponsor partnerships and helped support over 1,000 participants at
+              one of the largest collegiate hackathons in North America. I was
+              also a Project Manager and member of ACM at UTD, where I led
+              technical projects and collaborated closely with development
+              teams.
             </motion.p>
 
             <motion.p
               {...fadeInUp(0.35)}
               className="text-lg text-zinc-600 leading-relaxed"
             >
-              When I&apos;m not coding, you&apos;ll find me exploring new
-              technologies, contributing to open-source projects, or sketching
-              out ideas for my next build.
+              I’m driven by curiosity, continuous learning, and the opportunity
+              to build systems that make a meaningful impact.
             </motion.p>
-
           </div>
 
           {/* Right column — highlight cards */}
@@ -139,8 +138,8 @@ const About = () => {
                 </div>
               </motion.div>
             ))}
-
-            {/* Fun accent card */} {/*
+            {/* Fun accent card */}{" "}
+            {/*
             <motion.div
               {...fadeInUp(0.5)}
               className="rounded-2xl bg-gradient-to-br from-accent/[0.06] to-accent-warm/[0.06] border border-accent/[0.08] p-5"
