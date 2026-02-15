@@ -40,7 +40,7 @@ const experiences: Experience[] = [
   {
     company: "UTD Networking Lab",
     role: "Undergraduate ML Researcher",
-    shortRole: "ML Researcher",
+    shortRole: "Machine Learning Researcher",
     location: "Richardson, TX",
     date: "Aug 2024 – May 2025",
     bullets: [
