@@ -19,6 +19,8 @@ interface TypewriterProps {
     animate: Variants["animate"]
   }
   cursorClassName?: string
+  /** When display text contains a key, that substring is wrapped in a span with the given className */
+  highlightPatterns?: Record<string, string>
 }
 
 const Typewriter = ({
@@ -33,6 +35,7 @@ const Typewriter = ({
   hideCursorOnType = false,
   cursorChar = "|",
   cursorClassName = "ml-1",
+  highlightPatterns,
   cursorAnimationVariants = {
     initial: { opacity: 0 },
     animate: {
@@ -107,9 +110,42 @@ const Typewriter = ({
     loop,
   ])
 
+  const renderContent = () => {
+    if (!highlightPatterns || Object.keys(highlightPatterns).length === 0) {
+      return <span>{displayText}</span>
+    }
+
+    const fullText = texts[currentTextIndex]
+
+    for (const [substring, highlightClassName] of Object.entries(highlightPatterns)) {
+      const posInFull = fullText.indexOf(substring)
+      if (posInFull === -1) continue
+
+      const typedLen = displayText.length
+
+      if (typedLen <= posInFull) {
+        return <span>{displayText}</span>
+      }
+
+      const before = displayText.slice(0, posInFull)
+      const highlightEnd = Math.min(typedLen, posInFull + substring.length)
+      const highlighted = displayText.slice(posInFull, highlightEnd)
+      const after = displayText.slice(highlightEnd)
+
+      return (
+        <>
+          {before}
+          <span className={highlightClassName}>{highlighted}</span>
+          {after}
+        </>
+      )
+    }
+    return <span>{displayText}</span>
+  }
+
   return (
     <span className={`inline whitespace-pre-wrap tracking-tight ${className}`}>
-      <span>{displayText}</span>
+      {renderContent()}
       {showCursor && (
         <motion.span
           variants={cursorAnimationVariants}

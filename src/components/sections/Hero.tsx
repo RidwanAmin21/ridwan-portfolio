@@ -180,12 +180,15 @@ const Hero = () => {
             >
               <Typewriter
                 text={["Software Engineer", "Class of 2026", "Incoming @ AWS"]}
-                speed={95}
-                waitTime={2400}
-                deleteSpeed={55}
+                speed={140}
+                waitTime={2800}
+                deleteSpeed={75}
                 className="text-zinc-900"
                 cursorChar="|"
                 cursorClassName="ml-0.5 text-zinc-500"
+                highlightPatterns={{
+                  AWS: "text-[#FF9900] font-semibold",
+                }}
               />
             </motion.p>
 
