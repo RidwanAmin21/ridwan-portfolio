@@ -208,12 +208,12 @@ const Hero = () => {
               className="mt-10 flex flex-wrap gap-4 justify-center md:justify-start"
             >
               <a
-                href="#projects"
+                href="#experience"
                 className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3 text-sm font-medium text-white hover:bg-accent-hover transition-all duration-300 hover:shadow-lg hover:shadow-accent/25"
                 tabIndex={0}
-                aria-label="Explore my work"
+                aria-label="My Experiences"
               >
-                Explore My Work
+                My Experiences
                 <ArrowDown
                   size={16}
                   className="transition-transform duration-200 group-hover:translate-y-0.5"

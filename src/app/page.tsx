@@ -12,8 +12,8 @@ const Home = () => {
       <ScrollGradient />
       <Hero />
       <About />
-      <Projects />
       <Experience />
+      <Projects />
       <TechStack />
       <Contact />
     </main>
