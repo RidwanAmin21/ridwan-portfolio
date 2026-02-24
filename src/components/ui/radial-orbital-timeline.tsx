@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { ArrowRight, Link, Zap } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { ArrowRight, Link } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
@@ -17,8 +16,6 @@ export interface TimelineItem {
   /** Image src for logo (e.g. tech stack). Optional when icon is provided. */
   logo?: string;
   relatedIds: number[];
-  status: "completed" | "in-progress" | "pending";
-  energy: number;
 }
 
 interface RadialOrbitalTimelineProps {
@@ -150,46 +147,21 @@ export default function RadialOrbitalTimeline({
     return relatedItems.includes(itemId);
   };
 
-  const getStatusStyles = (status: TimelineItem["status"]): string => {
-    if (isLight) {
-      switch (status) {
-        case "completed":
-          return "text-primary-foreground bg-primary border-primary";
-        case "in-progress":
-          return "text-primary bg-primary-foreground border-primary";
-        case "pending":
-          return "text-muted-foreground bg-muted border-border";
-        default:
-          return "text-muted-foreground bg-muted border-border";
-      }
-    }
-    switch (status) {
-      case "completed":
-        return "text-white bg-black border-white";
-      case "in-progress":
-        return "text-black bg-white border-black";
-      case "pending":
-        return "text-white bg-black/40 border-white/50";
-      default:
-        return "text-white bg-black/40 border-white/50";
-    }
-  };
-
   return (
     <div
       className={cn(
-        "w-full flex flex-col items-center justify-center overflow-hidden",
+        "w-full flex flex-col items-center justify-center overflow-visible py-24",
         isLight
           ? "bg-transparent min-h-[70vh] text-foreground"
-          : "h-screen bg-black",
+          : "h-screen bg-black min-h-[70vh]",
         className
       )}
       ref={containerRef}
       onClick={handleContainerClick}
     >
-      <div className="relative w-full max-w-4xl h-full flex items-center justify-center">
+      <div className="relative w-full max-w-4xl h-full flex items-center justify-center overflow-visible">
         <div
-          className="absolute w-full h-full flex items-center justify-center"
+          className="absolute w-full h-full flex items-center justify-center overflow-visible"
           ref={orbitRef}
           style={{
             perspective: "1000px",
@@ -274,10 +246,10 @@ export default function RadialOrbitalTimeline({
                     background: isLight
                       ? "radial-gradient(circle, rgba(0,0,0,0.06) 0%, transparent 70%)"
                       : "radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%)",
-                    width: `${item.energy * 0.5 + 40}px`,
-                    height: `${item.energy * 0.5 + 40}px`,
-                    left: `-${(item.energy * 0.5 + 40 - 40) / 2}px`,
-                    top: `-${(item.energy * 0.5 + 40 - 40) / 2}px`,
+                    width: "40px",
+                    height: "40px",
+                    left: "0px",
+                    top: "0px",
                   }}
                 />
 
@@ -332,19 +304,7 @@ export default function RadialOrbitalTimeline({
                       )}
                     />
                     <CardHeader className="pb-2">
-                      <div className="flex justify-between items-center">
-                        <Badge
-                          className={cn(
-                            "px-2 text-xs",
-                            getStatusStyles(item.status)
-                          )}
-                        >
-                          {item.status === "completed"
-                            ? "COMPLETE"
-                            : item.status === "in-progress"
-                              ? "IN PROGRESS"
-                              : "PENDING"}
-                        </Badge>
+                      <div className="flex justify-end">
                         <span
                           className={cn(
                             "text-xs font-mono",
@@ -370,32 +330,6 @@ export default function RadialOrbitalTimeline({
                       )}
                     >
                       <p>{item.content}</p>
-
-                      <div
-                        className={cn(
-                          "mt-4 pt-3 border-t",
-                          isLight ? "border-border" : "border-white/10"
-                        )}
-                      >
-                        <div className="flex justify-between items-center text-xs mb-1">
-                          <span className="flex items-center">
-                            <Zap size={10} className="mr-1" />
-                            Energy Level
-                          </span>
-                          <span className="font-mono">{item.energy}%</span>
-                        </div>
-                        <div
-                          className={cn(
-                            "w-full h-1 rounded-full overflow-hidden",
-                            isLight ? "bg-muted" : "bg-white/10"
-                          )}
-                        >
-                          <div
-                            className="h-full bg-gradient-to-r from-accent to-indigo-500"
-                            style={{ width: `${item.energy}%` }}
-                          />
-                        </div>
-                      </div>
 
                       {item.relatedIds.length > 0 && (
                         <div

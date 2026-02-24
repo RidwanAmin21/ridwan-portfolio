@@ -83,19 +83,8 @@ const defaultProjects: Project[] = [
       "An AI-powered budgeting app built using the Plaid API and a supervised learning model to provide Texas teachers with personalized financial insights. Built an AI chatbot with OpenAI API to offer tailored budgeting and investment advice with a React.js and Flask interface.",
     imageUrl: "/images/finteach.png",
     tags: ["React.js", "Flask", "Plaid API", "OpenAI API"],
-    githubUrl: "https://github.com/RidwanAmin21",
-    devpostUrl: "https://devpost.com",
-  },
-  {
-    title: "CatchUp",
-    subtitle: "ACM Projects Winner",
-    description:
-      "A mobile social media app that facilitates unique daily video montages for enhanced user interaction. Used Flutter to build an interactive and user-friendly UI and Firebase to develop a relational database.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=600&q=80",
-    tags: ["Flutter", "Firebase", "FFmpeg API"],
-    githubUrl: "https://github.com/RidwanAmin21",
-    devpostUrl: "https://devpost.com",
+    githubUrl: "https://github.com/IbrahimKhanGH/FinTeach",
+    devpostUrl: "https://devpost.com/software/hackunt2024",
   },
   {
     title: "Pilot",
@@ -104,8 +93,8 @@ const defaultProjects: Project[] = [
       "Gathers small business information, analyzes the answers to develop a risk score, and provides personalized insurance recommendations. Leverages Vertex AI on Google Cloud and machine learning to analyze answers and provide user recommendations.",
     imageUrl: "/images/pilot.png",
     tags: ["React.js", "MongoDB", "Vertex AI"],
-    githubUrl: "https://github.com/RidwanAmin21",
-    devpostUrl: "https://devpost.com",
+    githubUrl: "https://github.com/ElyasBelkhir/Pilot",
+    devpostUrl: "https://devpost.com/software/risky-buisness",
   },
 ];
 

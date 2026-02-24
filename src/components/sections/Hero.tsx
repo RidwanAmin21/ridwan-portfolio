@@ -153,11 +153,11 @@ const Hero = () => {
                 </motion.span>
               </motion.span>
               <span className="text-xs font-mono text-zinc-600 tracking-wide">
-                Next stop{" "}
+                Incoming @{" "}
                 <span
                   className="font-semibold bg-gradient-to-r from-emerald-600 via-teal-500 to-sky-600 bg-clip-text text-transparent"
                 >
-                  Seattle
+                  AWS
                 </span>
               </span>
             </motion.div>

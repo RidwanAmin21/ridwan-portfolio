@@ -5,20 +5,20 @@ import type { TimelineItem } from "@/components/ui/radial-orbital-timeline";
 
 /* Tech stack as orbital timeline items – same logos and labels as before */
 const techTimelineData: TimelineItem[] = [
-  { id: 1, title: "Java", date: "Tech", content: "Object-oriented language for backend and Android.", category: "Language", logo: "/icons/icons8-java.svg", relatedIds: [14], status: "completed", energy: 85 },
-  { id: 2, title: "Python", date: "Tech", content: "Scripting, data science, and automation.", category: "Language", logo: "/icons/icons8-python.svg", relatedIds: [8, 11], status: "completed", energy: 90 },
-  { id: 3, title: "JavaScript", date: "Tech", content: "Frontend and Node.js runtime.", category: "Language", logo: "/icons/javascript-logo-svgrepo-com.svg", relatedIds: [4, 5], status: "completed", energy: 88 },
-  { id: 4, title: "React.js", date: "Tech", content: "UI library for single-page applications.", category: "Frontend", logo: "/icons/icons8-react-js.svg", relatedIds: [3, 5], status: "completed", energy: 85 },
-  { id: 5, title: "Node.js", date: "Tech", content: "JavaScript runtime for server-side apps.", category: "Backend", logo: "/icons/icons8-nodejs.svg", relatedIds: [3, 4], status: "completed", energy: 80 },
-  { id: 6, title: "C++", date: "Tech", content: "Systems and performance-critical code.", category: "Language", logo: "/icons/icons8-c++.svg", relatedIds: [7], status: "completed", energy: 70 },
-  { id: 7, title: "Dart", date: "Tech", content: "Language powering Flutter apps.", category: "Language", logo: "/icons/icons8-dart.svg", relatedIds: [6, 12], status: "completed", energy: 75 },
-  { id: 8, title: "Pandas", date: "Tech", content: "Data analysis and manipulation in Python.", category: "Data", logo: "/icons/icons8-pandas.svg", relatedIds: [2, 11], status: "completed", energy: 82 },
-  { id: 9, title: "AWS", date: "Tech", content: "Cloud infrastructure and services.", category: "Cloud", logo: "/icons/aws-svgrepo-com.svg", relatedIds: [5], status: "completed", energy: 72 },
-  { id: 10, title: "Postman", date: "Tech", content: "API development and testing.", category: "Tools", logo: "/icons/postman-icon.svg", relatedIds: [5, 11], status: "completed", energy: 88 },
-  { id: 11, title: "Flask", date: "Tech", content: "Lightweight Python web framework.", category: "Backend", logo: "/icons/flask.svg", relatedIds: [2, 8], status: "completed", energy: 85 },
-  { id: 12, title: "Flutter", date: "Tech", content: "Cross-platform mobile and desktop UI.", category: "Frontend", logo: "/icons/flutter.svg", relatedIds: [7], status: "completed", energy: 78 },
-  { id: 13, title: "Ruby", date: "Tech", content: "Dynamic language and Rails ecosystem.", category: "Language", logo: "/icons/ruby.svg", relatedIds: [11], status: "completed", energy: 65 },
-  { id: 14, title: "Spring Boot", date: "Tech", content: "Java application framework for production apps.", category: "Backend", logo: "/icons/spring.svg", relatedIds: [1], status: "completed", energy: 75 },
+  { id: 1, title: "Java", date: "Tech", content: "Object-oriented language for backend and Android.", category: "Language", logo: "/icons/icons8-java.svg", relatedIds: [14] },
+  { id: 2, title: "Python", date: "Tech", content: "Scripting, data science, and automation.", category: "Language", logo: "/icons/icons8-python.svg", relatedIds: [8, 11] },
+  { id: 3, title: "JavaScript", date: "Tech", content: "Frontend and Node.js runtime.", category: "Language", logo: "/icons/javascript-logo-svgrepo-com.svg", relatedIds: [4, 5] },
+  { id: 4, title: "React.js", date: "Tech", content: "UI library for single-page applications.", category: "Frontend", logo: "/icons/icons8-react-js.svg", relatedIds: [3, 5] },
+  { id: 5, title: "Node.js", date: "Tech", content: "JavaScript runtime for server-side apps.", category: "Backend", logo: "/icons/icons8-nodejs.svg", relatedIds: [3, 4] },
+  { id: 6, title: "C++", date: "Tech", content: "Systems and performance-critical code.", category: "Language", logo: "/icons/icons8-c++.svg", relatedIds: [7] },
+  { id: 7, title: "Dart", date: "Tech", content: "Language powering Flutter apps.", category: "Language", logo: "/icons/icons8-dart.svg", relatedIds: [6, 12] },
+  { id: 8, title: "Pandas", date: "Tech", content: "Data analysis and manipulation in Python.", category: "Data", logo: "/icons/icons8-pandas.svg", relatedIds: [2, 11] },
+  { id: 9, title: "AWS", date: "Tech", content: "Cloud infrastructure and services.", category: "Cloud", logo: "/icons/aws-svgrepo-com.svg", relatedIds: [5] },
+  { id: 10, title: "Postman", date: "Tech", content: "API development and testing.", category: "Tools", logo: "/icons/postman-icon.svg", relatedIds: [5, 11] },
+  { id: 11, title: "Flask", date: "Tech", content: "Lightweight Python web framework.", category: "Backend", logo: "/icons/flask.svg", relatedIds: [2, 8] },
+  { id: 12, title: "Flutter", date: "Tech", content: "Cross-platform mobile and desktop UI.", category: "Frontend", logo: "/icons/flutter.svg", relatedIds: [7] },
+  { id: 13, title: "Ruby", date: "Tech", content: "Dynamic language and Rails ecosystem.", category: "Language", logo: "/icons/ruby.svg", relatedIds: [11] },
+  { id: 14, title: "Spring Boot", date: "Tech", content: "Java application framework for production apps.", category: "Backend", logo: "/icons/spring.svg", relatedIds: [1] },
 ];
 
 const TechStack = () => {
