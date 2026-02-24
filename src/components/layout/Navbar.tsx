@@ -22,14 +22,14 @@ const NAV_ITEMS = [
     href: "#about",
   },
   {
-    title: "Projects",
-    icon: <IconCode className="h-full w-full text-zinc-600" />,
-    href: "#projects",
-  },
-  {
     title: "Experience",
     icon: <IconBriefcase className="h-full w-full text-zinc-600" />,
     href: "#experience",
+  },
+  {
+    title: "Projects",
+    icon: <IconCode className="h-full w-full text-zinc-600" />,
+    href: "#projects",
   },
   {
     title: "Contact",
