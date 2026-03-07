@@ -40,6 +40,7 @@ const NAV_ITEMS = [
     title: "Resume",
     icon: <IconFileText className="h-full w-full text-zinc-600" />,
     href: "/Ridwan_Amin_Resume_2025__Copy_%20(1).pdf",
+    openInNewTab: true,
   },
 ];
 
