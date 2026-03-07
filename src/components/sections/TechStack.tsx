@@ -13,7 +13,7 @@ const techTimelineData: TimelineItem[] = [
   { id: 6, title: "C++", date: "Tech", content: "Systems and performance-critical code.", category: "Language", logo: "/icons/icons8-c++.svg", relatedIds: [7] },
   { id: 7, title: "Dart", date: "Tech", content: "Language powering Flutter apps.", category: "Language", logo: "/icons/icons8-dart.svg", relatedIds: [6, 12] },
   { id: 8, title: "Pandas", date: "Tech", content: "Data analysis and manipulation in Python.", category: "Data", logo: "/icons/icons8-pandas.svg", relatedIds: [2, 11] },
-  { id: 9, title: "AWS", date: "Tech", content: "Cloud infrastructure and services.", category: "Cloud", logo: "/icons/aws-svgrepo-com.svg", relatedIds: [5] },
+  { id: 9, title: "AWS", date: "Tech", content: "Cloud infrastructure and services.", category: "Cloud", logo: "/icons/aws-svgrepo-com.svg", relatedIds: [1,5,2, 14] },
   { id: 10, title: "Postman", date: "Tech", content: "API development and testing.", category: "Tools", logo: "/icons/postman-icon.svg", relatedIds: [5, 11] },
   { id: 11, title: "Flask", date: "Tech", content: "Lightweight Python web framework.", category: "Backend", logo: "/icons/flask.svg", relatedIds: [2, 8] },
   { id: 12, title: "Flutter", date: "Tech", content: "Cross-platform mobile and desktop UI.", category: "Frontend", logo: "/icons/flutter.svg", relatedIds: [7] },
