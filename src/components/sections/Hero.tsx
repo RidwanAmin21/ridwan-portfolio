@@ -197,9 +197,7 @@ const Hero = () => {
               {...fadeUp(CONTENT_START + 0.15)}
               className="mt-6 max-w-md text-base text-zinc-500 leading-relaxed mx-auto md:mx-0"
             >
-              New grad software engineer passionate about crafting polished,
-              user-centered web applications. Bringing fresh perspective and
-              clean code to every project.
+              New grad software engineer passionate about building things that actually matter
             </motion.p>
 
             {/* CTA Buttons */}
