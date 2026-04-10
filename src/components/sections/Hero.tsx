@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import Image from "next/image";
-import { ArrowDown, Github, Linkedin, Mail, Plane } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, MapPin } from "lucide-react";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import { Typewriter } from "@/components/ui/typewriter";
 import { useEffect, useRef, useState } from "react";
@@ -115,6 +115,43 @@ const HandwrittenName = () => {
   );
 };
 
+/* ── location line ────────────────────────────────────────── */
+const LocationLine = () => (
+  <motion.p
+    {...fadeUp(0.1)}
+    className="flex items-center gap-1.5 mb-6 font-mono text-xs text-muted-foreground/70 tracking-wider justify-center md:justify-start"
+  >
+    <motion.span
+      initial={{ y: -8, opacity: 0 }}
+      animate={{ y: [0, -1.5, 0], opacity: 1 }}
+      transition={{
+        y: { duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: 1.2 },
+        opacity: { duration: 0.4, delay: 0.3 },
+      }}
+      className="inline-flex text-accent"
+    >
+      <MapPin size={12} strokeWidth={2} />
+    </motion.span>
+    {/* Dallas — warm heat shimmer */}
+    <motion.span
+      animate={{ opacity: [0.7, 1, 0.7] }}
+      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+      className="text-muted-foreground/80"
+    >
+      Dallas
+    </motion.span>
+    <span className="text-accent/30">&middot;</span>
+    {/* Seattle — cool breeze sway */}
+    <motion.span
+      animate={{ x: [0, 1.5, 0, -1.5, 0] }}
+      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      className="text-muted-foreground/80"
+    >
+      Seattle
+    </motion.span>
+  </motion.p>
+);
+
 /* ── hero section ──────────────────────────────────────────── */
 const Hero = () => {
   return (
@@ -132,36 +169,8 @@ const Hero = () => {
         <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16 lg:gap-20">
           {/* Text Content */}
           <div className="flex-1 text-center md:text-left order-2 md:order-1">
-            {/* Next Stop Badge */}
-            <motion.div
-              {...fadeUp(0.1)}
-              className="inline-flex items-center gap-2 mb-8 rounded-full border border-accent/10 bg-card/80 backdrop-blur-sm px-4 py-1.5 shadow-sm shadow-accent/5"
-            >
-              {/* Animated plane */}
-              <motion.span
-                className="text-accent"
-                initial={{ x: -10, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
-              >
-                <motion.span
-                  className="block"
-                  animate={{ x: [0, 2, 0], y: [0, -1, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <Plane size={14} className="-rotate-12" strokeWidth={2.5} />
-                </motion.span>
-              </motion.span>
-              <span className="text-xs font-mono text-muted-foreground tracking-wide">
-                Incoming @{" "}
-                <span
-                  className="font-semibold bg-gradient-to-r from-emerald-600 via-teal-500 to-sky-600 bg-clip-text text-transparent"
-                  style={{ color: "#0d9488" /* teal fallback for older browsers */ }}
-                >
-                  AWS
-                </span>
-              </span>
-            </motion.div>
+            {/* Location */}
+            <LocationLine />
 
             {/* Greeting */}
             <motion.p
