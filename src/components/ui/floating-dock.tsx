@@ -60,6 +60,7 @@ const FloatingDockMobile = ({
           <motion.div
             layoutId="nav"
             className="absolute inset-x-0 bottom-full mb-2 flex flex-col gap-2"
+            role="menu"
           >
             {items.map((item, idx) => (
               <motion.div
@@ -85,7 +86,9 @@ const FloatingDockMobile = ({
                     target: "_blank",
                     rel: "noopener noreferrer",
                   })}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white border border-zinc-200 shadow-sm"
+                  className="flex h-11 w-11 items-center justify-center rounded-full bg-card border border-border shadow-sm"
+                  role="menuitem"
+                  aria-label={item.title}
                 >
                   <div className="h-4 w-4">{item.icon}</div>
                 </a>
@@ -96,9 +99,11 @@ const FloatingDockMobile = ({
       </AnimatePresence>
       <button
         onClick={() => setOpen(!open)}
-        className="flex h-10 w-10 items-center justify-center rounded-full bg-white border border-zinc-200 shadow-sm"
+        className="flex h-11 w-11 items-center justify-center rounded-full bg-card border border-border shadow-sm"
+        aria-label="Toggle navigation menu"
+        aria-expanded={open}
       >
-        <IconLayoutNavbarCollapse className="h-5 w-5 text-zinc-500" />
+        <IconLayoutNavbarCollapse className="h-5 w-5 text-muted-foreground" />
       </button>
     </div>
   );
@@ -122,7 +127,7 @@ const FloatingDockDesktop = ({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "mx-auto hidden h-16 items-end gap-4 rounded-2xl bg-white/80 backdrop-blur-xl border border-zinc-200 shadow-lg shadow-zinc-200/50 px-4 pb-3 md:flex",
+        "mx-auto hidden h-16 items-end gap-4 rounded-2xl bg-card/80 backdrop-blur-xl border border-border shadow-lg shadow-border/50 px-4 pb-3 md:flex",
         className,
       )}
     >
@@ -191,6 +196,7 @@ function IconContainer({
   return (
     <a
       href={href}
+      aria-label={title}
       {...(openInNewTab && {
         target: "_blank",
         rel: "noopener noreferrer",
@@ -201,7 +207,7 @@ function IconContainer({
         style={{ width, height }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="relative flex aspect-square items-center justify-center rounded-full bg-zinc-100 border border-zinc-200"
+        className="relative flex aspect-square items-center justify-center rounded-full bg-muted border border-border"
       >
         <AnimatePresence>
           {hovered && (
@@ -209,7 +215,7 @@ function IconContainer({
               initial={{ opacity: 0, y: 10, x: "-50%" }}
               animate={{ opacity: 1, y: 0, x: "-50%" }}
               exit={{ opacity: 0, y: 2, x: "-50%" }}
-              className="absolute -top-8 left-1/2 w-fit rounded-md border border-zinc-200 bg-white px-2 py-0.5 text-xs whitespace-pre text-zinc-700 shadow-sm"
+              className="absolute -top-8 left-1/2 w-fit rounded-md border border-border bg-card px-2 py-0.5 text-xs whitespace-pre text-foreground/80 shadow-sm"
             >
               {title}
             </motion.div>

@@ -1,16 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Image from "next/image";
-import { Sparkles } from "lucide-react";
-
-/* ── scroll-triggered fade-up helper ──────────────────────── */
-const fadeInUp = (delay: number = 0) => ({
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-80px" },
-  transition: { duration: 0.6, delay, ease: [0.25, 0.4, 0.25, 1] as const },
-});
+import { fadeInUp } from "@/lib/animations";
 
 const UTD_LOGO =
   "/icons/UT_Dallas_2_Color_Emblem_-_SVG_Brand_Identity_File.svg.png";
@@ -50,7 +42,7 @@ const About = () => {
 
       {/* Divider line */}
       <div className="mx-auto max-w-5xl px-6 relative">
-        <div className="h-px bg-gradient-to-r from-transparent via-zinc-200 to-transparent" />
+        <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       </div>
 
       <div className="relative mx-auto max-w-5xl w-full px-6">
@@ -65,7 +57,7 @@ const About = () => {
 
           <motion.h2
             {...fadeInUp(0.1)}
-            className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-zinc-900 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground leading-tight"
           >
             A little bit
             <span className="text-accent"> about me</span>
@@ -78,7 +70,7 @@ const About = () => {
           <div className="md:col-span-3 space-y-6">
             <motion.p
               {...fadeInUp(0.15)}
-              className="text-lg text-zinc-600 leading-relaxed"
+              className="text-lg text-muted-foreground leading-relaxed"
             >
               I&apos;m a Computer Science senior at the University of Texas at
               Dallas, graduating in May 2026, with a passion for building
@@ -89,7 +81,7 @@ const About = () => {
 
             <motion.p
               {...fadeInUp(0.25)}
-              className="text-lg text-zinc-600 leading-relaxed"
+              className="text-lg text-muted-foreground leading-relaxed"
             >
               I served as Corporate Relations Lead for HackUTD, where I managed
               sponsor partnerships and helped support over 1,000 participants at
@@ -101,7 +93,7 @@ const About = () => {
 
             <motion.p
               {...fadeInUp(0.35)}
-              className="text-lg text-zinc-600 leading-relaxed"
+              className="text-lg text-muted-foreground leading-relaxed"
             >
               I’m driven by curiosity, continuous learning, and the opportunity
               to build systems that make a meaningful impact.
@@ -114,7 +106,7 @@ const About = () => {
               <motion.div
                 key={item.label}
                 {...fadeInUp(0.2 + i * 0.12)}
-                className="group relative rounded-2xl border border-accent/[0.08] bg-white/70 backdrop-blur-sm p-5 shadow-sm hover:shadow-md hover:border-accent/20 transition-all duration-300"
+                className="group relative rounded-2xl border border-accent/[0.08] bg-card/70 backdrop-blur-sm p-5 shadow-sm hover:shadow-md hover:border-accent/20 transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-accent/[0.08] text-accent group-hover:bg-accent/[0.12] transition-colors duration-300 overflow-hidden p-1">
@@ -128,33 +120,16 @@ const About = () => {
                     />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-zinc-800 mb-1">
+                    <h3 className="text-sm font-semibold text-foreground mb-1">
                       {item.label}
                     </h3>
-                    <p className="text-sm text-zinc-500 leading-relaxed">
+                    <p className="text-sm text-muted-foreground leading-relaxed">
                       {item.description}
                     </p>
                   </div>
                 </div>
               </motion.div>
             ))}
-            {/* Fun accent card */}{" "}
-            {/*
-            <motion.div
-              {...fadeInUp(0.5)}
-              className="rounded-2xl bg-gradient-to-br from-accent/[0.06] to-accent-warm/[0.06] border border-accent/[0.08] p-5"
-            >
-              <div className="flex items-center gap-2 mb-2">
-                <Sparkles size={16} className="text-accent" />
-                <span className="text-xs font-mono text-accent tracking-wide">
-                  Fun fact
-                </span>
-              </div>
-              <p className="text-sm text-zinc-600 leading-relaxed">
-                I&apos;m a firm believer that great software is built at the
-                intersection of design empathy and engineering rigor.
-              </p>
-            </motion.div> */}
           </div>
         </div>
       </div>

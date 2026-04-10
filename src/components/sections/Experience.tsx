@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import {
@@ -13,14 +13,7 @@ import {
 } from "lucide-react";
 import DisplayCards from "@/components/ui/display-cards";
 import type { DisplayCardProps } from "@/components/ui/display-cards";
-
-/* ── scroll-triggered fade-up helper ──────────────────────── */
-const fadeInUp = (delay: number = 0) => ({
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-80px" },
-  transition: { duration: 0.6, delay, ease: [0.25, 0.4, 0.25, 1] as const },
-});
+import { fadeInUp } from "@/lib/animations";
 
 /* ── experience data ──────────────────────────────────────── */
 interface Experience {
@@ -178,7 +171,7 @@ const Experience = () => {
       description: exp.shortRole,
       date: exp.date,
       iconClassName: isActive ? "bg-accent" : "bg-accent/20",
-      titleClassName: isActive ? "text-accent" : "text-zinc-500",
+      titleClassName: isActive ? "text-accent" : "text-muted-foreground",
       onClick: () => setActiveIndex(i),
       className: cn(
         "[grid-area:stack]",
@@ -206,7 +199,7 @@ const Experience = () => {
 
       {/* Divider line */}
       <div className="mx-auto max-w-5xl px-6 relative">
-        <div className="h-px bg-gradient-to-r from-transparent via-zinc-200 to-transparent" />
+        <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       </div>
 
       <div className="relative mx-auto max-w-6xl w-full px-6">
@@ -221,7 +214,7 @@ const Experience = () => {
 
           <motion.h2
             {...fadeInUp(0.1)}
-            className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-zinc-900 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground leading-tight"
           >
             My
             <span className="text-accent"> Experiences</span>
@@ -229,7 +222,7 @@ const Experience = () => {
 
           <motion.p
             {...fadeInUp(0.18)}
-            className="mt-4 max-w-lg text-base text-zinc-500 leading-relaxed"
+            className="mt-4 max-w-lg text-base text-muted-foreground leading-relaxed"
           >
             Click a card to explore
             each chapter of my journey!
@@ -260,8 +253,8 @@ const Experience = () => {
                 className={cn(
                   "flex-shrink-0 grid place-items-center h-8 w-8 rounded-full border transition-all duration-300",
                   activeIndex === 0
-                    ? "border-zinc-200 text-zinc-300 cursor-not-allowed"
-                    : "border-zinc-300 text-zinc-500 hover:border-accent/30 hover:text-accent hover:bg-accent/[0.06]",
+                    ? "border-border text-muted-foreground/50 cursor-not-allowed"
+                    : "border-border text-muted-foreground hover:border-accent/30 hover:text-accent hover:bg-accent/[0.06]",
                 )}
               >
                 <ChevronLeft size={16} />
@@ -276,17 +269,27 @@ const Experience = () => {
                 className="flex items-center gap-2 px-1 h-8 touch-none select-none cursor-pointer"
               >
                 {experiences.map((exp, i) => (
-                  <span
+                  <button
+                    type="button"
                     key={exp.company + exp.shortRole}
                     onClick={() => setActiveIndex(i)}
-                    className={cn(
-                      "block rounded-full transition-all duration-500",
-                      i === activeIndex
-                        ? "h-2.5 w-8 bg-accent"
-                        : "h-2.5 w-2.5 bg-zinc-300 hover:bg-zinc-400",
-                    )}
+                    onKeyDown={(e) => {
+                      if (e.key === "ArrowRight") goNext();
+                      if (e.key === "ArrowLeft") goPrev();
+                    }}
+                    className="relative flex items-center justify-center h-11 w-11 cursor-pointer"
                     aria-label={`View ${exp.company} experience`}
-                  />
+                    aria-current={i === activeIndex ? "true" : undefined}
+                  >
+                    <span
+                      className={cn(
+                        "block rounded-full transition-all duration-500",
+                        i === activeIndex
+                          ? "h-2.5 w-8 bg-accent"
+                          : "h-2.5 w-2.5 bg-border hover:bg-muted-foreground/50",
+                      )}
+                    />
+                  </button>
                 ))}
               </div>
 
@@ -298,8 +301,8 @@ const Experience = () => {
                 className={cn(
                   "flex-shrink-0 grid place-items-center h-8 w-8 rounded-full border transition-all duration-300",
                   activeIndex === maxIndex
-                    ? "border-zinc-200 text-zinc-300 cursor-not-allowed"
-                    : "border-zinc-300 text-zinc-500 hover:border-accent/30 hover:text-accent hover:bg-accent/[0.06]",
+                    ? "border-border text-muted-foreground/50 cursor-not-allowed"
+                    : "border-border text-muted-foreground hover:border-accent/30 hover:text-accent hover:bg-accent/[0.06]",
                 )}
               >
                 <ChevronRight size={16} />
@@ -323,9 +326,9 @@ const Experience = () => {
                 {/* Card wrapper */}
                 <div
                   className={cn(
-                    "rounded-2xl border bg-white/70 backdrop-blur-sm p-6 sm:p-8 shadow-sm",
+                    "rounded-2xl border bg-card/70 backdrop-blur-sm p-6 sm:p-8 shadow-sm",
                     selected.isFeatured
-                      ? "border-accent/20 bg-gradient-to-br from-white/80 to-accent/[0.03]"
+                      ? "border-accent/20 bg-gradient-to-br from-card/80 to-accent/[0.03]"
                       : "border-accent/[0.08]",
                   )}
                 >
@@ -394,13 +397,13 @@ const Experience = () => {
                       />
                     </div>
                     <div className="min-w-0">
-                      <h3 className="text-xl sm:text-2xl font-semibold text-zinc-900 leading-tight">
+                      <h3 className="text-xl sm:text-2xl font-semibold text-foreground leading-tight">
                         {selected.role}
                       </h3>
                       <p className="text-base font-medium text-accent mt-1">
                         {selected.company}
                         {selected.team && (
-                          <span className="text-zinc-400 font-normal">
+                          <span className="text-muted-foreground/70 font-normal">
                             {" "}
                             &middot; {selected.team}
                           </span>
@@ -410,13 +413,13 @@ const Experience = () => {
                   </div>
 
                   {/* Meta info */}
-                  <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-500 mb-5">
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground mb-5">
                     <span className="inline-flex items-center gap-1.5">
-                      <MapPin size={14} className="text-zinc-400" />
+                      <MapPin size={14} className="text-muted-foreground/70" />
                       {selected.location}
                     </span>
                     <span className="inline-flex items-center gap-1.5">
-                      <Calendar size={14} className="text-zinc-400" />
+                      <Calendar size={14} className="text-muted-foreground/70" />
                       {selected.date}
                     </span>
                   </div>
@@ -429,14 +432,14 @@ const Experience = () => {
                     <ul className="space-y-3">
                       {selected.bullets.map((bullet, i) => (
                         <motion.li
-                          key={i}
+                          key={`${activeIndex}-${i}`}
                           initial={{ opacity: 0, x: 10 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.08 * i, duration: 0.3 }}
-                          className="flex items-start gap-2.5 text-sm text-zinc-600 leading-relaxed"
+                          className="flex items-start gap-2.5 text-sm text-muted-foreground leading-relaxed min-w-0"
                         >
                           <span className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-accent/30 mt-[7px]" />
-                          {bullet}
+                          <span className="break-words min-w-0">{bullet}</span>
                         </motion.li>
                       ))}
                     </ul>
@@ -445,7 +448,7 @@ const Experience = () => {
                       <div className="h-10 w-10 rounded-full bg-accent/[0.08] flex items-center justify-center">
                         <Sparkles size={18} className="text-accent" />
                       </div>
-                      <p className="text-sm text-zinc-500 leading-relaxed">
+                      <p className="text-sm text-muted-foreground leading-relaxed">
                         Excited to join the team full-time after graduation in
                         May 2026!
                       </p>
@@ -461,7 +464,7 @@ const Experience = () => {
                           "rounded-full px-2.5 py-0.5 text-[11px] font-medium",
                           selected.isFeatured
                             ? "bg-accent/[0.06] border border-accent/[0.1] text-accent"
-                            : "bg-zinc-100 text-zinc-500",
+                            : "bg-muted text-muted-foreground",
                         )}
                       >
                         {tag}

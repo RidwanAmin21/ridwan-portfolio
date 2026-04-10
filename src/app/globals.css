@@ -19,8 +19,6 @@ html {
 }
 
 body {
-  background-color: #fafafa;
-  color: #0a0a0a;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -28,7 +26,7 @@ body {
 
 ::selection {
   background-color: var(--color-accent);
-  color: #fafafa;
+  color: var(--primary-foreground);
 }
 
 @theme inline {
@@ -151,9 +149,30 @@ body {
 
 /* Radial orbital timeline – custom utilities (Tailwind already provides pulse, ping, durations) */
 .bg-gradient-orbital {
-  background: linear-gradient(to bottom right, #6366f1, #3b82f6, #14b8a6);
+  background: linear-gradient(to bottom right, var(--color-accent), var(--color-accent-glow), #14b8a6);
 }
 
 .shadow-orbital {
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px oklch(1 0 0 / 10%);
+}
+
+@keyframes footer-gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Reduced motion: disable CSS-based animations and transitions */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

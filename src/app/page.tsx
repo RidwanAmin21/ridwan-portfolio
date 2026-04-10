@@ -4,6 +4,7 @@ import Projects from "@/components/sections/Projects";
 import TechStack from "@/components/sections/TechStack";
 import Experience from "@/components/sections/Experience";
 import Contact from "@/components/sections/Contact";
+import Footer from "@/components/sections/Footer";
 import ScrollGradient from "@/components/ScrollGradient";
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
       <Projects />
       <TechStack />
       <Contact />
+      <Footer />
     </main>
   );
 };

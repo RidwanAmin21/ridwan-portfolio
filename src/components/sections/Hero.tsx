@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Image from "next/image";
 import { ArrowDown, Github, Linkedin, Mail, Plane } from "lucide-react";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
@@ -135,7 +135,7 @@ const Hero = () => {
             {/* Next Stop Badge */}
             <motion.div
               {...fadeUp(0.1)}
-              className="inline-flex items-center gap-2 mb-8 rounded-full border border-accent/10 bg-white/80 backdrop-blur-sm px-4 py-1.5 shadow-sm shadow-accent/5"
+              className="inline-flex items-center gap-2 mb-8 rounded-full border border-accent/10 bg-card/80 backdrop-blur-sm px-4 py-1.5 shadow-sm shadow-accent/5"
             >
               {/* Animated plane */}
               <motion.span
@@ -152,10 +152,11 @@ const Hero = () => {
                   <Plane size={14} className="-rotate-12" strokeWidth={2.5} />
                 </motion.span>
               </motion.span>
-              <span className="text-xs font-mono text-zinc-600 tracking-wide">
+              <span className="text-xs font-mono text-muted-foreground tracking-wide">
                 Incoming @{" "}
                 <span
                   className="font-semibold bg-gradient-to-r from-emerald-600 via-teal-500 to-sky-600 bg-clip-text text-transparent"
+                  style={{ color: "#0d9488" /* teal fallback for older browsers */ }}
                 >
                   AWS
                 </span>
@@ -183,9 +184,9 @@ const Hero = () => {
                 speed={140}
                 waitTime={2800}
                 deleteSpeed={75}
-                className="text-zinc-900"
+                className="text-foreground"
                 cursorChar="|"
-                cursorClassName="ml-0.5 text-zinc-500"
+                cursorClassName="ml-0.5 text-muted-foreground"
                 highlightPatterns={{
                   AWS: "text-[#FF9900] font-semibold",
                 }}
@@ -195,7 +196,7 @@ const Hero = () => {
             {/* Description */}
             <motion.p
               {...fadeUp(CONTENT_START + 0.15)}
-              className="mt-6 max-w-md text-base text-zinc-500 leading-relaxed mx-auto md:mx-0"
+              className="mt-6 max-w-md text-base text-muted-foreground leading-relaxed mx-auto md:mx-0"
             >
               New grad software engineer passionate about building things that actually matter
             </motion.p>
@@ -219,7 +220,7 @@ const Hero = () => {
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 rounded-full border border-accent/15 bg-white/80 backdrop-blur-sm px-7 py-3 text-sm font-medium text-zinc-700 hover:bg-white hover:border-accent/25 transition-all duration-300 shadow-sm"
+                className="inline-flex items-center gap-2 rounded-full border border-accent/15 bg-card/80 backdrop-blur-sm px-7 py-3 text-sm font-medium text-foreground/80 hover:bg-card hover:border-accent/25 transition-all duration-300 shadow-sm"
                 tabIndex={0}
                 aria-label="Get in touch"
               >
@@ -238,25 +239,25 @@ const Hero = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="grid place-items-center h-9 w-9 rounded-full border border-zinc-200 bg-white/80 backdrop-blur-sm text-zinc-500 hover:text-accent hover:border-accent/25 hover:shadow-md hover:shadow-accent/10 transition-all duration-300"
+                className="grid place-items-center h-11 w-11 rounded-full border border-border bg-card/80 backdrop-blur-sm text-muted-foreground hover:text-accent hover:border-accent/25 hover:shadow-md hover:shadow-accent/10 transition-all duration-300"
               >
-                <Linkedin size={16} />
+                <Linkedin size={18} />
               </a>
               <a
                 href="https://github.com/RidwanAmin21"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="grid place-items-center h-9 w-9 rounded-full border border-zinc-200 bg-white/80 backdrop-blur-sm text-zinc-500 hover:text-accent hover:border-accent/25 hover:shadow-md hover:shadow-accent/10 transition-all duration-300"
+                className="grid place-items-center h-11 w-11 rounded-full border border-border bg-card/80 backdrop-blur-sm text-muted-foreground hover:text-accent hover:border-accent/25 hover:shadow-md hover:shadow-accent/10 transition-all duration-300"
               >
-                <Github size={16} />
+                <Github size={18} />
               </a>
               <a
                 href="mailto:ridwan.amin41@gmail.com"
                 aria-label="Email"
-                className="grid place-items-center h-9 w-9 rounded-full border border-zinc-200 bg-white/80 backdrop-blur-sm text-zinc-500 hover:text-accent hover:border-accent/25 hover:shadow-md hover:shadow-accent/10 transition-all duration-300"
+                className="grid place-items-center h-11 w-11 rounded-full border border-border bg-card/80 backdrop-blur-sm text-muted-foreground hover:text-accent hover:border-accent/25 hover:shadow-md hover:shadow-accent/10 transition-all duration-300"
               >
-                <Mail size={16} />
+                <Mail size={18} />
               </a>
             </motion.div>
           </div>
@@ -295,7 +296,7 @@ const Hero = () => {
                           <p className="text-base font-semibold text-white">
                             Ridwan Amin
                           </p>
-                          <p className="text-sm font-mono text-zinc-400 mt-0.5">
+                          <p className="text-sm font-mono text-white/60 mt-0.5">
                             University of Texas at Dallas &middot; Class of 2026
                           </p>
                         </div>
@@ -323,7 +324,7 @@ const Hero = () => {
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="flex flex-col items-center gap-2"
         >
-          <span className="text-[11px] font-mono text-zinc-400 tracking-widest uppercase">
+          <span className="text-[11px] font-mono text-muted-foreground/70 tracking-widest uppercase">
             scroll
           </span>
           <div className="h-8 w-px bg-gradient-to-b from-accent/30 to-transparent" />

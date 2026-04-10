@@ -103,18 +103,21 @@ export const ProfessionalConnect = ({
   showHeader = true,
   className = "",
 }: ProfessionalConnectProps) => {
-  const [, setHoveredIndex] = useState<number | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     setIsLoaded(true);
+
+    // Only track mouse position when fullHeight mode needs the cursor follower
+    if (!fullHeight) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  }, [fullHeight]);
 
   const cardRadius =
     cardStyle === "square" ? "rounded-lg" : "rounded-2xl";
@@ -179,11 +182,9 @@ export const ProfessionalConnect = ({
               rel={platform.href.startsWith("http") ? "noopener noreferrer" : undefined}
               className={`group relative transition-all duration-700 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
               style={{ transitionDelay: `${index * 100}ms` }}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
             >
               <div
-                className={`relative overflow-hidden border border-slate-700/50 p-8 backdrop-blur-xl transition-all duration-500 hover:scale-105 hover:border-slate-600/50 ${cardRadius} ${fullHeight ? "from-slate-800/50 to-slate-900/50 bg-gradient-to-br" : "from-white to-zinc-50/80 border-zinc-200/80 bg-gradient-to-br shadow-sm hover:border-accent/30"}`}
+                className={`relative overflow-hidden border border-slate-700/50 p-8 backdrop-blur-xl transition-all duration-500 hover:scale-105 hover:border-slate-600/50 ${cardRadius} ${fullHeight ? "from-slate-800/50 to-slate-900/50 bg-gradient-to-br" : "from-card to-muted/80 border-border/80 bg-gradient-to-br shadow-sm hover:border-accent/30"}`}
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${platform.gradient} opacity-0 transition-opacity duration-500 group-hover:opacity-10`}
@@ -203,17 +204,17 @@ export const ProfessionalConnect = ({
                     {platform.icon}
                   </div>
                   <h3
-                    className={`mb-1 text-lg font-semibold transition-colors duration-300 ${fullHeight ? "text-white" : "text-zinc-900"}`}
+                    className={`mb-1 text-lg font-semibold transition-colors duration-300 ${fullHeight ? "text-white" : "text-foreground"}`}
                   >
                     {platform.name}
                   </h3>
                   <p
-                    className={`text-sm transition-colors duration-300 ${fullHeight ? "text-gray-500 group-hover:text-gray-400" : "text-zinc-500 group-hover:text-zinc-600"}`}
+                    className={`text-sm transition-colors duration-300 ${fullHeight ? "text-gray-500 group-hover:text-gray-400" : "text-muted-foreground group-hover:text-foreground/70"}`}
                   >
                     {platform.description}
                   </p>
                   <div
-                    className={`mt-4 flex items-center transition-all duration-300 ${fullHeight ? "text-gray-600 group-hover:text-white" : "text-zinc-600 group-hover:text-accent"}`}
+                    className={`mt-4 flex items-center transition-all duration-300 ${fullHeight ? "text-gray-600 group-hover:text-white" : "text-muted-foreground group-hover:text-accent"}`}
                   >
                     <span className="text-sm font-medium transition-all duration-300 group-hover:translate-x-0">
                       Connect

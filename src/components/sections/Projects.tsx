@@ -1,14 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { ProjectCardCarousel } from "@/components/ui/project-card-carousel";
-
-const fadeInUp = (delay: number = 0) => ({
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-80px" },
-  transition: { duration: 0.6, delay, ease: [0.25, 0.4, 0.25, 1] as const },
-});
+import { fadeInUp } from "@/lib/animations";
 
 const Projects = () => {
   return (
@@ -25,7 +19,7 @@ const Projects = () => {
 
       {/* Divider line */}
       <div className="mx-auto max-w-5xl px-6 relative">
-        <div className="h-px bg-gradient-to-r from-transparent via-zinc-200 to-transparent" />
+        <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       </div>
 
       <div className="relative mx-auto max-w-6xl w-full px-6">
@@ -39,7 +33,7 @@ const Projects = () => {
 
           <motion.h2
             {...fadeInUp(0.1)}
-            className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-zinc-900 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground leading-tight"
           >
             Personal
             <span className="text-accent"> projects</span>
@@ -47,7 +41,7 @@ const Projects = () => {
 
           <motion.p
             {...fadeInUp(0.18)}
-            className="mt-4 max-w-lg text-base text-zinc-500 leading-relaxed"
+            className="mt-4 max-w-lg text-base text-muted-foreground leading-relaxed"
           >
             Hackathon winning projects and personal side projects.
           </motion.p>

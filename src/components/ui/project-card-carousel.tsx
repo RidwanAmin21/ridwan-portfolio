@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import {
   Github,
   ExternalLink,
@@ -65,7 +65,7 @@ function TagChip({ tag }: { tag: string }) {
           alt=""
           width={14}
           height={14}
-          className="shrink-0"
+          className="shrink-0 !w-3.5 !h-3.5"
         />
       ) : IconComponent ? (
         <IconComponent className="w-3.5 h-3.5 shrink-0" />
@@ -130,7 +130,7 @@ export function ProjectCardCarousel({
         <motion.div
           whileHover={{ scale: 1.03, y: -6, zIndex: 20 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          className="w-[470px] aspect-[16/10] rounded-3xl overflow-hidden bg-zinc-100 flex-shrink-0 border border-accent/[0.08] relative z-0 cursor-pointer shadow-lg hover:shadow-accent/20"
+          className="w-[470px] aspect-[16/10] rounded-3xl overflow-hidden bg-muted flex-shrink-0 border border-accent/[0.08] relative z-0 cursor-pointer shadow-lg hover:shadow-accent/20"
           style={{ willChange: "transform" }}
         >
           <AnimatePresence mode="wait">
@@ -160,7 +160,7 @@ export function ProjectCardCarousel({
         <motion.div
           whileHover={{ scale: 1.02, y: -4 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          className="rounded-3xl border border-accent/[0.08] bg-white/80 backdrop-blur-sm shadow-xl p-8 ml-[-80px] z-10 max-w-xl flex-1 hover:shadow-2xl hover:border-accent/20"
+          className="rounded-3xl border border-accent/[0.08] bg-card/80 backdrop-blur-sm shadow-xl p-8 ml-[-80px] z-10 max-w-xl flex-1 hover:shadow-2xl hover:border-accent/20"
           style={{ willChange: "transform" }}
         >
           <AnimatePresence mode="wait">
@@ -172,15 +172,15 @@ export function ProjectCardCarousel({
               transition={{ duration: 0.4, ease: "easeInOut" }}
             >
               <div className="mb-6">
-                <h2 className="text-2xl font-bold text-zinc-900 mb-2">
+                <h2 className="text-2xl font-bold text-foreground mb-2">
                   {current.title}
                 </h2>
-                <p className="text-sm font-medium text-zinc-500">
+                <p className="text-sm font-medium text-muted-foreground">
                   {current.subtitle}
                 </p>
               </div>
 
-              <p className="text-zinc-600 text-base leading-relaxed mb-6">
+              <p className="text-muted-foreground text-base leading-relaxed mb-6">
                 {current.description}
               </p>
 
@@ -214,7 +214,7 @@ export function ProjectCardCarousel({
 
       {/* Mobile layout — same 16:10 aspect, sharp rendering */}
       <div className="md:hidden max-w-sm mx-auto text-center">
-        <div className="w-full aspect-[16/10] rounded-3xl overflow-hidden mb-6 border border-accent/[0.08] bg-zinc-100 relative">
+        <div className="w-full aspect-[16/10] rounded-3xl overflow-hidden mb-6 border border-accent/[0.08] bg-muted relative">
           <AnimatePresence mode="wait">
             <motion.div
               key={current.imageUrl}
@@ -247,13 +247,13 @@ export function ProjectCardCarousel({
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
             >
-              <h2 className="text-xl font-bold text-zinc-900 mb-2">
+              <h2 className="text-xl font-bold text-foreground mb-2">
                 {current.title}
               </h2>
-              <p className="text-sm font-medium text-zinc-500 mb-4">
+              <p className="text-sm font-medium text-muted-foreground mb-4">
                 {current.subtitle}
               </p>
-              <p className="text-zinc-600 text-sm leading-relaxed mb-4">
+              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                 {current.description}
               </p>
               {current.tags && current.tags.length > 0 && (
@@ -291,27 +291,32 @@ export function ProjectCardCarousel({
           whileTap={{ scale: 0.92 }}
           transition={{ type: "spring", stiffness: 400, damping: 17 }}
           aria-label="Previous project"
-          className="w-12 h-12 rounded-full border border-zinc-200 bg-white/80 shadow-sm flex items-center justify-center hover:bg-accent/[0.06] hover:border-accent/30 hover:shadow-md transition-colors cursor-pointer text-zinc-600 hover:text-accent"
+          className="w-12 h-12 rounded-full border border-border bg-card/80 shadow-sm flex items-center justify-center hover:bg-accent/[0.06] hover:border-accent/30 hover:shadow-md transition-colors cursor-pointer text-muted-foreground hover:text-accent"
         >
           <ChevronLeft className="w-6 h-6" />
         </motion.button>
 
         <div className="flex gap-2">
-          {projects.map((_, i) => (
+          {projects.map((project, i) => (
             <motion.button
               key={i}
               onClick={() => setCurrentIndex(i)}
-              whileHover={{ scale: 1.4 }}
-              whileTap={{ scale: 0.85 }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.92 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              className={cn(
-                "w-3 h-3 rounded-full transition-colors cursor-pointer",
-                i === currentIndex
-                  ? "bg-accent shadow-sm shadow-accent/30"
-                  : "bg-zinc-300 hover:bg-accent/40"
-              )}
-              aria-label={`Go to project ${i + 1}`}
-            />
+              className="relative flex items-center justify-center h-11 w-11 cursor-pointer"
+              aria-label={`Go to project: ${project.title}`}
+              aria-current={i === currentIndex ? "true" : undefined}
+            >
+              <span
+                className={cn(
+                  "block w-3 h-3 rounded-full transition-colors",
+                  i === currentIndex
+                    ? "bg-accent shadow-sm shadow-accent/30"
+                    : "bg-border"
+                )}
+              />
+            </motion.button>
           ))}
         </div>
 
@@ -321,7 +326,7 @@ export function ProjectCardCarousel({
           whileTap={{ scale: 0.92 }}
           transition={{ type: "spring", stiffness: 400, damping: 17 }}
           aria-label="Next project"
-          className="w-12 h-12 rounded-full border border-zinc-200 bg-white/80 shadow-sm flex items-center justify-center hover:bg-accent/[0.06] hover:border-accent/30 hover:shadow-md transition-colors cursor-pointer text-zinc-600 hover:text-accent"
+          className="w-12 h-12 rounded-full border border-border bg-card/80 shadow-sm flex items-center justify-center hover:bg-accent/[0.06] hover:border-accent/30 hover:shadow-md transition-colors cursor-pointer text-muted-foreground hover:text-accent"
         >
           <ChevronRight className="w-6 h-6" />
         </motion.button>

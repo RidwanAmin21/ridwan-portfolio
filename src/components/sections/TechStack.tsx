@@ -1,66 +1,153 @@
 "use client";
 
-import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline";
-import type { TimelineItem } from "@/components/ui/radial-orbital-timeline";
+import { motion } from "motion/react";
+import Image from "next/image";
+import { fadeInUp } from "@/lib/animations";
 
-/* Tech stack as orbital timeline items – same logos and labels as before */
-const techTimelineData: TimelineItem[] = [
-  { id: 1, title: "Java", date: "Tech", content: "Object-oriented language for backend and Android.", category: "Language", logo: "/icons/icons8-java.svg", relatedIds: [14] },
-  { id: 2, title: "Python", date: "Tech", content: "Scripting, data science, and automation.", category: "Language", logo: "/icons/icons8-python.svg", relatedIds: [8, 11] },
-  { id: 3, title: "JavaScript", date: "Tech", content: "Frontend and Node.js runtime.", category: "Language", logo: "/icons/javascript-logo-svgrepo-com.svg", relatedIds: [4, 5] },
-  { id: 4, title: "React.js", date: "Tech", content: "UI library for single-page applications.", category: "Frontend", logo: "/icons/icons8-react-js.svg", relatedIds: [3, 5] },
-  { id: 5, title: "Node.js", date: "Tech", content: "JavaScript runtime for server-side apps.", category: "Backend", logo: "/icons/icons8-nodejs.svg", relatedIds: [3, 4] },
-  { id: 6, title: "C++", date: "Tech", content: "Systems and performance-critical code.", category: "Language", logo: "/icons/icons8-c++.svg", relatedIds: [7] },
-  { id: 7, title: "Dart", date: "Tech", content: "Language powering Flutter apps.", category: "Language", logo: "/icons/icons8-dart.svg", relatedIds: [6, 12] },
-  { id: 8, title: "Pandas", date: "Tech", content: "Data analysis and manipulation in Python.", category: "Data", logo: "/icons/icons8-pandas.svg", relatedIds: [2, 11] },
-  { id: 9, title: "AWS", date: "Tech", content: "Cloud infrastructure and services.", category: "Cloud", logo: "/icons/aws-svgrepo-com.svg", relatedIds: [1,5,2, 14] },
-  { id: 10, title: "Postman", date: "Tech", content: "API development and testing.", category: "Tools", logo: "/icons/postman-icon.svg", relatedIds: [5, 11] },
-  { id: 11, title: "Flask", date: "Tech", content: "Lightweight Python web framework.", category: "Backend", logo: "/icons/flask.svg", relatedIds: [2, 8] },
-  { id: 12, title: "Flutter", date: "Tech", content: "Cross-platform mobile and desktop UI.", category: "Frontend", logo: "/icons/flutter.svg", relatedIds: [7] },
-  { id: 13, title: "Ruby", date: "Tech", content: "Dynamic language and Rails ecosystem.", category: "Language", logo: "/icons/ruby.svg", relatedIds: [11] },
-  { id: 14, title: "Spring Boot", date: "Tech", content: "Java application framework for production apps.", category: "Backend", logo: "/icons/spring.svg", relatedIds: [1] },
+type Skill = {
+  name: string;
+  logo: string;
+};
+
+type Category = {
+  label: string;
+  skills: Skill[];
+};
+
+const categories: Category[] = [
+  {
+    label: "Languages",
+    skills: [
+      { name: "Java", logo: "/icons/icons8-java.svg" },
+      { name: "Python", logo: "/icons/icons8-python.svg" },
+      { name: "JavaScript", logo: "/icons/javascript-logo-svgrepo-com.svg" },
+      { name: "C++", logo: "/icons/icons8-c++.svg" },
+      { name: "Dart", logo: "/icons/icons8-dart.svg" },
+      { name: "Ruby", logo: "/icons/ruby.svg" },
+    ],
+  },
+  {
+    label: "Frontend",
+    skills: [
+      { name: "React.js", logo: "/icons/icons8-react-js.svg" },
+      { name: "Flutter", logo: "/icons/flutter.svg" },
+    ],
+  },
+  {
+    label: "Backend",
+    skills: [
+      { name: "Node.js", logo: "/icons/icons8-nodejs.svg" },
+      { name: "Flask", logo: "/icons/flask.svg" },
+      { name: "Spring Boot", logo: "/icons/spring.svg" },
+    ],
+  },
+  {
+    label: "Data & Cloud",
+    skills: [
+      { name: "Pandas", logo: "/icons/icons8-pandas.svg" },
+      { name: "AWS", logo: "/icons/aws-svgrepo-com.svg" },
+    ],
+  },
+  {
+    label: "Tools",
+    skills: [
+      { name: "Postman", logo: "/icons/postman-icon.svg" },
+    ],
+  },
 ];
 
 const TechStack = () => {
   return (
-    <section id="tech-stack" aria-label="Tech Stack" className="relative overflow-hidden">
-      {/* Smoother gradient wash – blends into previous and next sections */}
+    <section id="tech-stack" aria-label="Tech Stack" className="relative overflow-hidden py-20 md:py-28">
+      {/* Background effects */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div
-          className="absolute inset-0 opacity-100"
+          className="absolute inset-0"
           style={{
-            background: "linear-gradient(to bottom, transparent 0%, transparent 8%, rgba(99, 102, 241, 0.02) 25%, rgba(99, 102, 241, 0.04) 50%, rgba(99, 102, 241, 0.02) 75%, transparent 92%, transparent 100%)",
+            background:
+              "linear-gradient(to bottom, transparent 0%, transparent 8%, rgba(99, 102, 241, 0.02) 25%, rgba(99, 102, 241, 0.04) 50%, rgba(99, 102, 241, 0.02) 75%, transparent 92%, transparent 100%)",
           }}
         />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[1000px] rounded-full bg-accent-glow/[0.06] blur-[180px]" />
-        {/* Soft fades into previous and next sections */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[450px] w-[800px] rounded-full bg-accent-glow/[0.05] blur-[160px]" />
         <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent" />
       </div>
 
       {/* Divider line */}
       <div className="mx-auto max-w-5xl px-6 relative">
-        <div className="h-px bg-gradient-to-r from-transparent via-zinc-200 to-transparent" />
+        <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       </div>
 
       {/* Section header */}
-      <div className="relative pt-20 pb-6 lg:pt-28">
+      <div className="relative pt-16 pb-10 md:pt-20 md:pb-14">
         <div className="mx-auto max-w-5xl px-6 text-center">
-          <h2 className="text-zinc-900 font-semibold tracking-tight text-2xl md:text-3xl">
-            My tech stack
-          </h2>
-          <p className="mt-2 text-muted-foreground text-sm md:text-base max-w-xl mx-auto">
-            Languages, frameworks, and tools I use. Click a node to see details and related tech.
-          </p>
+          <motion.div {...fadeInUp(0)} className="flex items-center justify-center gap-3 mb-4">
+            <div className="h-px w-8 bg-accent/40" />
+            <span className="font-mono text-xs uppercase tracking-widest text-accent">Tech Stack</span>
+            <div className="h-px w-8 bg-accent/40" />
+          </motion.div>
+          <motion.h2
+            {...fadeInUp(0.1)}
+            className="text-foreground font-semibold tracking-tight text-2xl md:text-3xl"
+          >
+            Tools I work{" "}
+            <span className="text-accent">with</span>
+          </motion.h2>
+          <motion.p
+            {...fadeInUp(0.15)}
+            className="mt-3 text-muted-foreground text-sm md:text-base max-w-lg mx-auto"
+          >
+            Languages, frameworks, and tools I use to build things.
+          </motion.p>
         </div>
       </div>
 
-      {/* Orbital timeline – themed to match site */}
-      <RadialOrbitalTimeline
-        timelineData={techTimelineData}
-        variant="light"
-        className="min-h-[70vh] pb-14 lg:pb-20"
-      />
+      {/* Skills grid by category */}
+      <div className="relative mx-auto max-w-4xl px-6 space-y-10">
+        {categories.map((category, catIdx) => (
+          <motion.div
+            key={category.label}
+            {...fadeInUp(0.1 + catIdx * 0.08)}
+          >
+            <h3 className="font-mono text-xs uppercase tracking-widest text-muted-foreground/70 mb-4">
+              {category.label}
+            </h3>
+            <div className="flex flex-wrap gap-3">
+              {category.skills.map((skill, skillIdx) => (
+                <motion.div
+                  key={skill.name}
+                  initial={{ opacity: 0, y: 16, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{
+                    duration: 0.4,
+                    delay: 0.1 + catIdx * 0.06 + skillIdx * 0.04,
+                    ease: [0.25, 0.4, 0.25, 1],
+                  }}
+                  whileHover={{
+                    y: -3,
+                    transition: { duration: 0.2 },
+                  }}
+                  className="group flex items-center gap-2.5 rounded-xl bg-card/70 backdrop-blur-sm px-4 py-2.5 border border-border/80 shadow-sm transition-shadow duration-300 hover:shadow-md hover:border-accent/20 cursor-default"
+                  role="listitem"
+                  aria-label={skill.name}
+                >
+                  <Image
+                    src={skill.logo}
+                    alt=""
+                    width={20}
+                    height={20}
+                    className="w-5 h-5 object-contain shrink-0 transition-transform duration-300 group-hover:scale-110"
+                  />
+                  <span className="text-sm font-medium text-foreground/80 transition-colors duration-300 group-hover:text-foreground">
+                    {skill.name}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </section>
   );
 };

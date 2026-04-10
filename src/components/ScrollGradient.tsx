@@ -82,12 +82,18 @@ export default function ScrollGradient() {
   const orbRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
+    // Respect prefers-reduced-motion — show static orbs at initial positions
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
     let ticking = false;
 
     const update = () => {
       const maxScroll =
         document.documentElement.scrollHeight - window.innerHeight;
-      const progress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+      const progress =
+        prefersReducedMotion ? 0 : (maxScroll > 0 ? window.scrollY / maxScroll : 0);
 
       ORBS.forEach((orb, i) => {
         const el = orbRefs.current[i];
@@ -113,8 +119,12 @@ export default function ScrollGradient() {
 
     // Initial paint
     update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", update, { passive: true });
+
+    if (!prefersReducedMotion) {
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", update, { passive: true });
+    }
+
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", update);
